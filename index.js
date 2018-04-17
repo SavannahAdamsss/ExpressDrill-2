@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const data = require("./data/students");
+const index = express();
+let PORT = process.env.PORT || 3000;
 
 function findById(data, id){
     for (let i = 0; i < data.length; i++){
@@ -11,7 +13,6 @@ function findById(data, id){
     return null;
 }
 
-const index = express();
 index.use(cors());
 
 index.get("/", function (request, response) {
@@ -31,4 +32,4 @@ index.get("/:id", function (request, response) {
     }
 });
 
-index.listen(3000 || process.env.PORT, () => console.log('Example app listening on port 3000!'));
+index.listen(PORT);
